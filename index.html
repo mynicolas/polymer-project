@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+	<head>
+		<title>demo</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+	  <link rel="import" href="components/polymer/layout.html">
+	  <link rel="import" href="components/polymer/polymer.html">
+	  <link rel="import" href="components/core-header-panel/core-header-panel.html">
+	  <link rel="import" href="components/core-toolbar/core-toolbar.html">
+	  <link rel="import" href="components/paper-tabs/paper-tabs.html">
+	  <link rel="import" href="components/core-menu/core-menu.html">
+	  <link rel="import" href="components/core-drawer-panel/core-drawer-panel.html">
+	  <link rel="import" href="components/core-item/core-item.html">
+	  <link rel="import" href="components/core-icon-button/core-icon-button.html">
+	  <link rel="import" href="components/core-collapse/core-collapse.html">
+	  <link rel="import" href="components/core-submenu/core-submenu.html">
+	  <script src="components/platform/platform.js"></script>
+	  <style>
+	  html,body {
+	    height: 100%;
+	    margin: 0;
+	    background-color: #E5E5E5;
+	    font-family: sans-serif;
+	  }
+	  core-header-panel {
+	    height: 100%;
+	    overflow: auto;
+	    -webkit-overflow-scrolling: touch; 
+	  }
+	  core-toolbar {
+	    background: #03a9f4;
+	    color: white;
+	  }
+	  #tabs {
+	    width: 100%;
+	    margin: 8px;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    text-transform: uppercase;
+	  }
+	  .container {
+	    width: 90%;
+	    margin: 0;
+	  }
+		#menuicon {
+			display: block;
+		}
+		core-item:hover {
+			cursor: pointer;
+		}
+	  @media (min-width: 481px) {
+	    #tabs {
+	      width: 250px;
+	    }
+	    .container {
+	      width: 100px;
+	    }
+  		#menuicon {
+				display: none;
+			}
+			core-item:hover {
+				cursor: pointer;
+			}
+	  }
+
+	  #navheader {
+	  	background-color: #56ba89;
+	  }
+	  core-drawer-panel:not([narrow]) #navicon {
+	  	display: none;
+	  }
+	  </style>
+
+	  <script>
+	  document.addEventListener('polymer-ready', function () {
+	  	var navicon = document.getElementById('navicon');
+	  	var drawerPanel = document.getElementById('drawerPanel');
+	  	var menuicon = document.getElementById('menuicon');
+	  	var menu_settings = document.getElementById('menu-item-settings');
+	  	var menu_favorite = document.getElementById('menu-item-favorite');
+	  	var menu_account = document.getElementById('menu-item-account');
+	  	var settings = document.getElementById('settings');
+	  	var favorite = document.getElementById('favorite');
+	  	var account = document.getElementById('account');
+	  	navicon.addEventListener('click', function() {
+	  		drawerPanel.togglePanel();
+	  	});
+	  	menuicon.addEventListener('click', function() {
+	  		drawerPanel.togglePanel();
+	  	});
+	  	menu_settings.addEventListener('click', function() {
+	  		settings.toggle();
+	  	});
+	  	menu_favorite.addEventListener('click', function() {
+	  		favorite.toggle();
+	  	});
+	  	menu_account.addEventListener('click', function() {
+	  		account.toggle();
+	  	});
+
+	  });
+	  </script>
+	</head>
+
+	<body unresolved>	
+		<core-drawer-panel id="drawerPanel">
+			<core-header-panel drawer>
+				<core-toolbar id="navheader">
+	        <span flex six>menu</span>
+					<core-icon-button id="menuicon" icon="menu"></core-icon-button>
+				</core-toolbar>
+				<core-menu>
+					<core-item id="menu-item-settings" icon="settings" label="Settings">
+						<a href="#settings" tartget="_self"></a>
+					</core-item>
+					<core-submenu id="menu-item-favorite" icon="favorite" label="Favorite">
+						<core-item label="favorite1"></core-item>
+						<core-item label="favorite2"></core-item>
+						<core-item label="favorite3"></core-item>
+					</core-submenu>
+					<core-submenu id="menu-item-account" icon="account-box" label="Account">
+						<core-item label="acount1"></core-item>
+						<core-item label="acount2"></core-item>
+					</core-submenu>
+				</core-menu>
+					
+			</core-header-panel>
+
+			<core-header-panel main>
+				<core-toolbar id="mainheader">
+					<paper-icon-button id="navicon" icon="menu"></paper-icon-button>
+		      <paper-tabs id="tab2" selected="all" self-end>
+		        <paper-tab name="one">one</paper-tab>
+		        <paper-tab name="two">two</paper-tab>
+		        <paper-tab name="three">three</paper-tab>
+		      </paper-tabs>
+				</core-toolbar>
+			</core-header-panel>
+		</core-drawer-panel>
+	</body>
+
+</html>
