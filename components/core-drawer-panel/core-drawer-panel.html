@@ -218,6 +218,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
     // swipe support for the drawer, inspired by
     // https://github.com/Polymer/core-drawer-panel/pull/6
     trackStart : function(e) {
+      
       if (this.narrow && !this.disableSwipe) {
         this.dragging = true;
 
@@ -236,6 +237,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
     },
 
     trackx : function(e) {
+
       if (this.dragging) {
         var x;
         if (this.rightDrawer) {
